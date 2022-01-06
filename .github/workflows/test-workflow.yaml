@@ -4,7 +4,7 @@ on:
     branches:
       - main
 env:
-  envName: ${{ (github.ref_name == 'production' || "latest") || (github.ref_name == 'main' || "latest") }}
+  envName: ${{ (github.ref_name == 'production' || 'latest') || (github.ref_name == 'main' || 'latest') }}
 jobs:
   init:
     runs-on: ubuntu-latest
