@@ -4,7 +4,7 @@ on:
     branches:
       - main
 env:
-  envName: ${{ (github.ref_name == 'production' || 'latest') || (github.ref_name == 'main' || 'latest') }}
+  envName: ${{ (github.ref_name == 'production' && 'production') || (github.ref_name == 'main' && 'latest') }}
 jobs:
   init:
     runs-on: ubuntu-latest
@@ -17,4 +17,4 @@ jobs:
     runs-on: ubuntu-${{ needs.init.outputs.envName }}
     needs: ['init']
     steps:
-      - run: hey-${{ needs.init.outputs.envName }}.yaml apply && exit 4
+      - run: echo hey-${{ needs.init.outputs.envName }}.yaml apply && exit 4
