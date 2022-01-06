@@ -8,6 +8,8 @@ env:
 jobs:
   init:
     runs-on: ubuntu-latest
+    steps:
+      - run: echo hey
     outputs:
       envName: ${{ env.envName }}
     
@@ -15,4 +17,4 @@ jobs:
     runs-on: ubuntu-${{ needs.init.outputs.envName }}
     needs: ['init']
     steps:
-      run: hey-${{ needs.init.outputs.envName }}.yaml apply && exit 4
+      - run: hey-${{ needs.init.outputs.envName }}.yaml apply && exit 4
