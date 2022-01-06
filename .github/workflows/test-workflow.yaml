@@ -9,7 +9,7 @@ jobs:
   init:
     runs-on: ubuntu-latest
     steps:
-      - run: echo hey
+      - run: echo ${{ github.ref_name }}
     outputs:
       envName: ${{ env.envName }}
     
